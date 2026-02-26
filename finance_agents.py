@@ -64,7 +64,7 @@ investment_advisor = Agent(
         "considerations while emphasizing risk tolerance, time horizon, and the need for "
         "professional advice where appropriate."
     ),
-    llm=llm,   # ✅ ADD THIS
+    llm=llm,  
     max_iter=2,
     max_rpm=2,
     allow_delegation=False,
