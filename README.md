@@ -1,38 +1,54 @@
-# Financial Document Analyzer - Debug Assignment
+# Financial Document Analyzer
 
 ## Project Overview
-A comprehensive financial document analysis system that processes corporate reports, financial statements, and investment documents using AI-powered analysis agents.
 
-## Getting Started
+This project is an AI-powered financial document analysis system built using FastAPI and CrewAI. It processes uploaded financial PDFs and generates structured financial analysis using multi-agent orchestration.
 
-### Install Required Libraries
-```sh
-pip install -r requirement.txt
-```
+---
 
-### Sample Document
-The system analyzes financial documents like Tesla's Q2 2025 financial update.
+## Bugs Identified and Fixed
 
-**To add Tesla's financial document:**
-1. Download the Tesla Q2 2025 update from: https://www.tesla.com/sites/default/files/downloads/TSLA-Q2-2025-Update.pdf
-2. Save it as `data/sample.pdf` in the project directory
-3. Or upload any financial PDF through the API endpoint
+During debugging, the following issues were identified and resolved:
 
-**Note:** Current `data/sample.pdf` is a placeholder - replace with actual Tesla financial document for proper testing.
+### 1. Module Name Collision
+- `agents.py` conflicted with an installed `agents` package.
+- Renamed to `finance_agents.py`.
 
-# You're All Not Set!
-🐛 **Debug Mode Activated!** The project has bugs waiting to be squashed - your mission is to fix them and bring it to life.
+### 2. Undefined PDF Loader
+- `Pdf` class was used but never imported.
+- Replaced with `PyPDFLoader` from `langchain_community`.
 
-## Debugging Instructions
+### 3. Async Tool Misuse
+- Tools were defined as `async` but not awaited.
+- Converted to synchronous functions.
 
-1. **Identify the Bug**: Carefully read the code in each file and understand the expected behavior. There is a bug in each line of code. So be careful.
-2. **Fix the Bug**: Implement the necessary changes to fix the bug.
-3. **Test the Fix**: Run the project and verify that the bug is resolved.
-4. **Repeat**: Continue this process until all bugs are fixed.
+### 4. Missing LLM Configuration
+- Agents were initialized without attaching an LLM.
+- Integrated Groq LLM via CrewAI.
 
-## Expected Features
-- Upload financial documents (PDF format)
-- AI-powered financial analysis
-- Investment recommendations
-- Risk assessment
-- Market insights
+### 5. Model Deprecation
+- Original Groq model was decommissioned.
+- Updated to `llama-3.1-8b-instant`.
+
+### 6. Token Limit Error
+- Entire PDF exceeded Groq free-tier token limits.
+- Implemented safe truncation to avoid overflow.
+
+---
+
+## Architecture
+
+- FastAPI REST API
+- CrewAI multi-agent orchestration
+- Groq LLM integration
+- PDF parsing via LangChain
+
+---
+
+## Setup Instructions
+
+### 1. Clone Repository
+
+```bash
+git clone <repo-link>
+cd financial-document-analyzer
