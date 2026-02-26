@@ -1,0 +1,4 @@
+crewai==0.130.0
+fastapi==0.110.3
+uvicorn[standard]
+PyPDF2==3.0.1
