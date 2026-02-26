@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException
 import os
 import uuid
-
+from database import SessionLocal, AnalysisResult
 from crewai import Crew, Process
 from finance_agents import financial_analyst
 from task import analyze_financial_document
@@ -58,6 +58,16 @@ async def analyze_document(  # renamed
         # Process the financial document with all analysts
         response = run_crew(query=query.strip(), file_path=file_path)
         
+        db = SessionLocal()
+        record = AnalysisResult(
+            filename=file.filename,
+            query=query,
+            result=str(response)
+        )
+        db.add(record)
+        db.commit()
+        db.close()
+        
         return {
             "status": "success",
             "query": query,
@@ -75,6 +85,18 @@ async def analyze_document(  # renamed
                 os.remove(file_path)
             except:
                 pass  # Ignore cleanup errors
+            
+@app.get("/results")
+def get_results():
+    from database import SessionLocal, AnalysisResult
+    db = SessionLocal()
+    results = db.query(AnalysisResult).all()
+    db.close()
+
+    return [
+        {"id": r.id, "filename": r.filename, "query": r.query}
+        for r in results
+    ]
 
 if __name__ == "__main__":
     import uvicorn

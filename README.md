@@ -75,6 +75,14 @@ Once running:
 
 Endpoint: POST /analyze
 
+## Database Integration (Bonus)
+
+The system now stores analysis results using SQLite via SQLAlchemy.
+
+Results can be accessed through:
+
+GET /results
+
 #### Request:
 
 - Upload pdf
