@@ -80,7 +80,7 @@ risk_assessor = Agent(
     verbose=True,
     backstory=(
         "You have extensive experience in credit analysis, market risk, and liquidity risk. "
-        "You highlight both downside scenarios and uncertainty without exaggeration."
+        "You highlight both downside scenarios and uncertainty without exaggeration.."
     ),
     llm=llm,   
     max_iter=2,
