@@ -90,6 +90,9 @@ Response:
     "file_processed": "filename.pdf"
     }
 
+ <img width="1743" height="564" alt="image" src="https://github.com/user-attachments/assets/4922ea87-0a41-4a51-b801-653de04a3b95" />
+
+
 Author:
 
 Manu Singh
