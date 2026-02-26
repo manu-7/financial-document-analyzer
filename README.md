@@ -49,6 +49,49 @@ During debugging, the following issues were identified and resolved:
 
 ### 1. Clone Repository
 
-```bash
-git clone <repo-link>
-cd financial-document-analyzer
+    git clone <repo-link>
+    cd financial-document-analyzer
+
+### 2. Create Virtual Environment
+    python -m venv venv
+    venv\Scripts\activate
+
+### 3. Install Dependencies
+
+     Install Dependencies
+
+### 4. Add Environment Variables
+Create .env file:
+
+    GROQ_API_KEY=your_api_key_here
+
+### 5. Run Server
+    python -m uvicorn main:app --reload
+
+## API Documentation
+Once running:
+
+    http://127.0.0.1:8000/docs
+
+Endpoint: POST /analyze
+
+#### Request:
+
+- Upload pdf
+- Optional Query
+---
+
+Response:
+
+      {
+    "status": "success",
+    "query": "...",
+    "analysis": "...",
+    "file_processed": "filename.pdf"
+    }
+
+Author
+
+Manu Singh
+
+Backend & AI Integration Enthusiast
