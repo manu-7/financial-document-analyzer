@@ -43,7 +43,7 @@ During debugging, the following issues were identified and resolved:
 - Groq LLM integration
 - PDF parsing via LangChain
 
----
+--- 
 
 ## Setup Instructions
 
@@ -83,7 +83,8 @@ Results can be accessed through:
 
 GET /results
 
-#### Request:
+
+### Request:
 
 - Upload pdf
 - Optional Query
