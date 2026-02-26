@@ -68,21 +68,20 @@ Create .env file:
 ### 5. Run Server
     python -m uvicorn main:app --reload
 
-## API Documentation
-Once running:
-
-    http://127.0.0.1:8000/docs
-
-Endpoint: POST /analyze
-
 ## Database Integration (Bonus)
 
 The system now stores analysis results using SQLite via SQLAlchemy.
 
 Results can be accessed through:
 
-GET /results
+    GET /results
 
+## API Documentation
+Once running:
+
+    http://127.0.0.1:8000/docs
+
+Endpoint: POST /analyze
 
 ### Request:
 
